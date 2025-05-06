@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from add_0 import add
+from add_0 import add # type: ignore
 
 if __name__ == "__main__":
     a = 1
