@@ -4,4 +4,4 @@ def add(a, b):
     __name__ == "__main__"
     a = 1
     b = 2
-    print("{:d}".format(add = a + b))
+    print("{:d}".format(a + b))
