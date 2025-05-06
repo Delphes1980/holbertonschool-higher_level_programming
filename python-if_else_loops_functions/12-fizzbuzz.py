@@ -11,4 +11,3 @@ def fizzbuzz():
             print("{:d}".format(i), end='')
         if i < 101:
             print(" ", end='')
-
