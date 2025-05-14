@@ -10,10 +10,8 @@ def roman_to_int(roman_string):
         "M": 1000
     }
     num = 0
-
     if roman_string is None or type(roman_string) is not str:
         return 0
-    
     for i in range(len(roman_string)):
         current = roman_sign.get(roman_string[i])
         if i + 1 < len(roman_string):
