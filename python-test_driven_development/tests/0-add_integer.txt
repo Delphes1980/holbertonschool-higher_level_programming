@@ -44,5 +44,5 @@ SyntaxError: invalid syntax
 
 >>> add_integer(float('nan'), 2)
 Traceback (most recent call last):
-    ...
+...
 ValueError: cannot convert float NaN to integer
