@@ -14,17 +14,15 @@ def add_integer(a, b=98):
     a and b must be first casted to integers if they are float
     Parameters:
     a: first integer
-    b: second integer
+    b: second integer with default value 98
     Returns: the sum of a and b
-    Exceptions: TypeError
+    Raises: TypeError if inputs are not integer or float
     """
     if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
-    if type(a) == float:
-        a = int(a)
-    if type(b) == float:
-        b = int(b)
+    a = int(a)
+    b = int(b)
     result = a + b
     return result
