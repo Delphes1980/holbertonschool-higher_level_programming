@@ -11,6 +11,7 @@ def add_integer(a, b=98):
 
     """
     Description: Add two integers
+    a and b must be first casted to integers if they are float
     Parameters:
     a: first integer
     b: second integer
