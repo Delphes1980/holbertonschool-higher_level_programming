@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
     Module description: a module that contains a function called add_integer
 that add two integers
