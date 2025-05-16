@@ -1,0 +1,50 @@
+>>> print_square = __import__('4-print_square').print_square
+
+	# Standard Cases
+>>> print_square(5)
+######
+######
+######
+######
+######
+
+	# Edge Cases
+>>> print_square(three)
+Traceback (most recent call last):
+...
+NameError: name 'three' is not defined
+
+>>> print_square("three")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square(-2)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+>>> print_square(2.3)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square(-5.6)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square()
+Traceback (most recent call last):
+...
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+>>> print_square("3")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square("")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
