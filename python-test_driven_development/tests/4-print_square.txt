@@ -2,11 +2,17 @@
 
 	# Standard Cases
 >>> print_square(5)
-######
-######
-######
-######
-######
+#####
+#####
+#####
+#####
+#####
+
+>>> print_square(4)
+####
+####
+####
+####
 
 	# Edge Cases
 >>> print_square(three)

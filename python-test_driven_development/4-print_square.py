@@ -40,6 +40,6 @@ def print_square(size):
 
     for i in range(size):
         print("#", end='')
-        for j in range(size):
+        for j in range(size - 1):
             print("#", end='')
         print()
