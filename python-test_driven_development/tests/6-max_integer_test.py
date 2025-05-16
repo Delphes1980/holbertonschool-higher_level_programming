@@ -30,3 +30,6 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_is_float(self):
         self.assertEqual(max_integer([2.4, 3.6, 1.7]), 3.6)
+
+    def test_list_of_one_element(self):
+        self.assertEqual(max_integer([52]), 52)
