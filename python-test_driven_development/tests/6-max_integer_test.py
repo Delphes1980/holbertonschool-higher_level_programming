@@ -33,3 +33,6 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_list_of_one_element(self):
         self.assertEqual(max_integer([52]), 52)
+
+if __name__ == '__main__':
+    unittest.main()
