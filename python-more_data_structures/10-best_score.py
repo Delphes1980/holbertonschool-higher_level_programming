@@ -3,7 +3,7 @@ def best_score(a_dictionary):
     if not a_dictionary:
         return None
     biggest_key = None
-    biggest = -1
+    biggest = -1  # Every value would be greater than -1
     for key, value in a_dictionary.items():
         if value > biggest:
             biggest = value

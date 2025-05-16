@@ -7,3 +7,5 @@ def no_c(my_string):
         else:
             new_string.append(i)
     return "".join(new_string)
+# join() function is used to reconstruct a string without
+#  any separator between characters

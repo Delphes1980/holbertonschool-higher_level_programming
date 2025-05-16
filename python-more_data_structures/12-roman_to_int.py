@@ -13,8 +13,10 @@ def roman_to_int(roman_string):
     if roman_string is None or type(roman_string) is not str:
         return 0
     for i in range(len(roman_string)):
+        # retrieve the integer value associated with the current symbol
         current = roman_sign.get(roman_string[i])
-        if i + 1 < len(roman_string):
+        if i + 1 < len(roman_string):  # Check if there's another element
+            # retrieve the integer value associated with the next symbol
             next = roman_sign[roman_string[i + 1]]
             if current < next:
                 num = num - current

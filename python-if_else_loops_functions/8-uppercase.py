@@ -7,3 +7,5 @@ def uppercase(str):
             upper = i
         print("{:s}".format(upper), end='')
     print()
+# chr() function returns the character that represents the specified unicode
+# it's the opposite of ord() function
