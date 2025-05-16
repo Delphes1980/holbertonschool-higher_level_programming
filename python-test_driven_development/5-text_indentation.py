@@ -34,8 +34,11 @@ def text_indentation(text):
     for i in range(len((text))):
         text_to_print += text[i]
         if text[i] in ['.', '?', ':']:
+            # Erase training spaces at the end and the beginning
             text_to_print = text_to_print.rstrip().lstrip()
             print(text_to_print, end='\n\n')
+            # Reinitialisation of text_to_print
             text_to_print = ""
+    # Erase training spaces at the beginning
     text_to_print = text_to_print.lstrip()
     print(text_to_print, end='')
