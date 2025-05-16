@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """
-    Module description: a module that contains a function called add_integer
-that add two integers
+    Module description: module that contains a function called matrix_divided
+that divide a matrix by a given number
 
-    Functions: add_integer(a, b=98):
-    add two integers
+    Functions: matrix_divided(matrix, div):
+    divide a matrix by a given number
 """
 
 
@@ -37,12 +37,12 @@ def matrix_divided(matrix, div):
         raise TypeError("matrix must be a matrix (list of lists)"
                         " of integers/floats")
 
-    # Check if row are lists
+    # Check if there are lists inside the list
     if not all(isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a matrix (list of lists)"
                         " of integers/floats")
 
-    # Check if elements are int or float
+    # Check if elements in row are int or float
     if not all(isinstance(elem, (int, float)) for row in matrix
                for elem in row):
         raise TypeError("matrix must be a matrix (list of lists)"
