@@ -38,4 +38,4 @@ def text_indentation(text):
             print(text_to_print, end='\n\n')
             text_to_print = ""
     text_to_print = text_to_print.lstrip()
-    print(text_to_print)
+    print(text_to_print, end='')

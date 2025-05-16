@@ -9,10 +9,10 @@ Someone else's.
 Rainbow
 
 >>> text_indentation("")
-<BLANKLINE>
+
 
 >>> text_indentation("     ")
-<BLANKLINE>
+
 
 >>> text_indentation("Be: Someone? Else's. Rainbow.")
 Be:
@@ -22,7 +22,6 @@ Someone?
 Else's.
 <BLANKLINE>
 Rainbow.
-<BLANKLINE>
 <BLANKLINE>
 
 >>> text_indentation("Wait... What?")
@@ -34,13 +33,11 @@ Wait.
 <BLANKLINE>
 What?
 <BLANKLINE>
-<BLANKLINE>
 
 >>> text_indentation("Hello   world.  Python  is  horrible.")
 Hello   world.
 <BLANKLINE>
 Python  is  horrible.
-<BLANKLINE>
 <BLANKLINE>
 
 
