@@ -22,6 +22,7 @@ class Square:
         Note:
         __init__ method assign values to object properties
         size is a private instance attribute
+        position is a private instance attribute
 
         Args:
         size (int): The size of the square's sides (default 0)
