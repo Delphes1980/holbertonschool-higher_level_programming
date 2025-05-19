@@ -12,7 +12,6 @@ class Square:
 
     """
 
-
     def __init__(self, size=0):
         """
         Instantiation of the size attribute
@@ -33,7 +32,6 @@ class Square:
             Raises:
             TypeError if size is not an integer
             ValueError is size is less than 0
-
         """
 
         # Check if size is an integer
