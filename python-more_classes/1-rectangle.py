@@ -43,7 +43,7 @@ class Rectangle:
 
         # Checks if width is positive
         if value < 0:
-            raise ValueError("height must be >= 0")
+            raise ValueError("width must be >= 0")
 
         self.__width = value
 
