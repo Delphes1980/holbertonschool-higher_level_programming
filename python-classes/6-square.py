@@ -1,46 +1,36 @@
 #!/usr/bin/python3
 """
-    Module description: a module that contains a class called Square
-that define a square
 
-    Functions: class Square
+This module defines a class Square that represents a square shape.
 """
 
 
 class Square:
     """
-    A class Square that defines a square
-
-    Properties:
-    @property: retrieves the size of the square
-    @size.setter: fixes the size of the square
+    A class that defines a square by its size and position
 
     Attributes:
-    size (int): the size of the square
-    position (tuple): the position to begin printing the square
+    size (int): the size of the square's sides
+    position (tuple): the position (horizontal & vertical offset) for printing
 
     """
 
     def __init__(self, size=0, position=(0, 0)):
         """
-        Instantiation of the size attribute
+        Initializes a new Square
 
         Note:
         __init__ method assign values to object properties
         size is a private instance attribute
 
         Args:
-        size (int): size of the square
-
-        Attributes:
-        size (int): size of the square
-
-        Returns:
-        the size of the square
+        size (int): The size of the square's sides (default 0)
+        position (tuple): The position (horizontal, vertical)
+        for display (default (0, 0))
 
         Raises:
-        TypeError if size is not an integer
-        ValueError is size is less than 0
+        TypeError if size is not an integer or position is not a valid tuple
+        ValueError is size is negative
         """
 
         self.size = size
@@ -48,17 +38,17 @@ class Square:
 
     @property
     def size(self):
-        """ The getter property retrieves the size of the square
-        The setter property fixes the size of the square
-
-        The setter checks if the size of the square is an integer
-        and if it's less than 0
+        """ Getter for the size attribute
+        The getter property retrieves the size of the square
         """
 
         return self.__size
 
     @size.setter
     def size(self, value):
+        """ Setter for the size attribute.
+        Ensures that the value is an integer >= 0
+        """
         # Check if size is an integer
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
@@ -71,21 +61,26 @@ class Square:
 
     @property
     def position(self):
-        """ The getter property retrieves the position in the square
-        The setter property fixes the position in the square
-
-        The setter checks if the position in the square is a tuple
-        of integers
+        """ The getter for the position attribute
+        The getter property retrieves the position in the square
         """
 
         return self.__position
 
     @position.setter
     def position(self, value):
+        """The setter of the position attribute
+        Ensures that the value is a 2 positive integers tuple
+        """
+        # Checks if position is a tuple
         if not isinstance(value, tuple):
             raise TypeError("position must be a tuple of 2 positive integers")
+
+        # Checks if position is a 2 integers tuple
         if len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
+
+        # Checks if position is positive
         if not all(isinstance(num, int) and num >= 0 for num in value):
             raise TypeError("position must be a tuple of 2 positive integers")
 
@@ -93,17 +88,13 @@ class Square:
 
     def area(self):
         """
-        Returns the current square area
+        Calculates and returns the area of the square.
 
         Note:
         area is a public instance method
 
-        Attributes:
-        square_area (int): the area of the square
-        size (int): the size of the square
-
         Returns:
-        the current square area
+        int: the area (size * size)
 
         """
 
@@ -112,16 +103,12 @@ class Square:
 
     def my_print(self):
         """
-        prints in stdout the square with the character #
+        Prints the square with the '#' character, respecting
+        the position offset
+        If size is 0, prints an empty line
 
         Note:
         area is a public instance method
-
-        Attributes:
-        None
-
-        Returns:
-        the square printed with the character # using position
 
         """
 
