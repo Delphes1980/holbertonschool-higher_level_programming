@@ -118,7 +118,12 @@ class Rectangle:
         # Checks if width or height are equal to 0
         if self.width == 0 or self.height == 0:
             return ""
-        return ('#' * self.width + '\n') * self.height
+        # Build the rectangle line by line:
+        # ('#' * self.width + '\n') * (self.height - 1): creates all lines
+        # except the last one, each ending with a newline.
+        # The final + '#'*self.width: adds the last line without a newline
+        # to avoid an extra empty line at the end.
+        return ('#' * self.width + '\n') * (self.height - 1) + '#' * self.width
 
     def __repr__(self):
         """
