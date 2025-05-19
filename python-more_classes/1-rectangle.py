@@ -9,7 +9,7 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """
-        A class that defines a rectangle by its heigth and width
+        A class that defines a rectangle by its height and width
 
         Note:
         __init__ method assign values to object properties
@@ -49,7 +49,7 @@ class Rectangle:
 
     @property
     def height(self):
-        """ Getter for the width attribute
+        """ Getter for the height attribute
         The getter property retrieves the height of the rectangle
         """
 
@@ -57,7 +57,7 @@ class Rectangle:
 
     @height.setter
     def height(self, value):
-        """ Setter for the width attribute.
+        """ Setter for the height attribute.
         Ensures that the value is an integer >= 0
         """
 
