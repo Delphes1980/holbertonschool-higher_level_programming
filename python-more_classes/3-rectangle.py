@@ -137,5 +137,8 @@ class Rectangle:
             ClassName(width, height)
         """
 
-        # Returns class_name(width, height) in the output
-        return f"{self.__class__.__name__}({self.width}, {self.height})"
+        # Returns "module_name.class_name object at class_adress" in the output
+        return (
+            f"<{self.__module__}.{self.__class__.__name__}"
+            f"object at {hex(id(self))}>"
+        )
