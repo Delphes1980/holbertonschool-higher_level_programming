@@ -137,5 +137,5 @@ class Rectangle:
             ClassName(width, height)
         """
 
-        # Returns "module_name.class_name object at class_adress" in the output
+        # Returns "class_name object(width, height" in the output
         return (f"{self.__class__.__name__}{self.width, self.height}")
