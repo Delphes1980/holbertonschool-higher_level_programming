@@ -9,6 +9,8 @@ class Rectangle:
 
     number_of_instances = 0
 
+    print_symbol = "#"
+
     def __init__(self, width=0, height=0):
         """
         A class that defines a rectangle by its height and width
@@ -110,13 +112,13 @@ class Rectangle:
     def __str__(self):
         """
         Returns the string representation of the rectangle
-        for printing with '#' characters.
+        for printing with any characters.
 
         Note:
         __str__ is a special method used by print() and str().
 
         Returns:
-        str: a visual representation of the rectangle using '#' characters.
+        str: a visual representation of the rectangle using any characters.
         Returns an empty string if width or height is 0.
         """
 
@@ -128,7 +130,11 @@ class Rectangle:
         # except the last one, each ending with a newline.
         # The final + '#'*self.width: adds the last line without a newline
         # to avoid an extra empty line at the end.
-        return ('#' * self.width + '\n') * (self.height - 1) + '#' * self.width
+
+        # Converts any symbols (list, int...) into a printable string
+        symbol = str(self.print_symbol)
+        return ((symbol * self.width + '\n')
+                * (self.height - 1) + symbol * self.width)
 
     def __repr__(self):
         """
