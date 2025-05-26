@@ -14,7 +14,6 @@ class BaseGeometry:
         Note: is a public instance method
         """
         raise Exception("area() is not implemented")
-        pass
 
     def integer_validator(self, name, value):
         """
@@ -34,5 +33,3 @@ class BaseGeometry:
         # Checks if value i <= 0
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
-
-        pass
