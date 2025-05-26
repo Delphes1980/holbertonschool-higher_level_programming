@@ -16,10 +16,21 @@
 >>> MyList([2, 21, 6, -6]).print_sorted()
 [-6, 2, 6, 21]
 
+# Checks the append() function
 >>> l = MyList([1, 2, 3])
 >>> l.append(4)
 >>> l
 [1, 2, 3, 4]
+
+# Checks if the initial list had changed
+>>> l = MyList([5, 2, 8])
+>>> l.print_sorted()
+[2, 5, 8]
+>>> l
+[5, 2, 8]
+
+>>> MyList([]).print_sorted()
+[]
 
 # Edge Case
 
@@ -27,6 +38,3 @@
 Traceback (most recent call last):
 ...
 SyntaxError: invalid syntax
-
->>> MyList([]).print_sorted()
-[]
