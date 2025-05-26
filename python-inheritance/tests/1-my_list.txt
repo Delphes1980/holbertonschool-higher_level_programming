@@ -27,3 +27,6 @@
 Traceback (most recent call last):
 ...
 SyntaxError: invalid syntax
+
+>>> MyList([]).print_sorted()
+[]
