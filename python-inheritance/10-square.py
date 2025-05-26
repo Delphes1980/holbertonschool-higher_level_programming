@@ -23,8 +23,13 @@ class Square(Rectangle):
         size (int): the size of the square
         """
 
-        # Rectangle.__init__ will validate 'size' for width and height
-        # using BaseGeometry.integer_validator
+        # This call will use the inherited integer_validator method
+        # (via BaseGeometry) and raise the error with “size” if
+        # validation fails.
+        BaseGeometry.integer_validator(self, "size", size)
+        # Once ‘size’ has been validated, call the constructor of the parent
+        # class (Rectangle) It will receive an already validated ‘size’, and
+        # its own validation will pose no problem.
         super().__init__(size, size)
         self.__size = size
 
