@@ -16,6 +16,11 @@
 >>> MyList([2, 21, 6, -6]).print_sorted()
 [-6, 2, 6, 21]
 
+>>> l = MyList([1, 2, 3])
+>>> l.append(4)
+>>> l
+[1, 2, 3, 4]
+
 # Edge Case
 
 >>> MyList([1,  , 9])
