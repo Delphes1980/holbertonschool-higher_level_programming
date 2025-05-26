@@ -28,7 +28,7 @@ class BaseGeometry:
         """
 
         # Checks if value is strictly an integer and not a boolean
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
 
         # Checks if value i <= 0
