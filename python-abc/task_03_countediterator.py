@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines a class that print a notification message every time an
-item is added (using the append or extend methods) or removed (using the
-remove or pop methods)
+This module defines a class that counts the item in an iterable
 """
 
 
