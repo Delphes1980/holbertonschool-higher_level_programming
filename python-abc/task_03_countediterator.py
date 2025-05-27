@@ -30,7 +30,7 @@ class CountedIterator:
         try:
             # Goes to the next item in the iterable
             count = next(self.iterator)
-            type(self).count += 1  # Implementation of the counter
+            self.count += 1  # Implementation of the counter
             return count
         except StopIteration:
             raise
