@@ -19,7 +19,7 @@ class CountedIterator:
         It must be an iterable(lists, tuples, dictionaries..)
         """
         self.iterator = iter(iterable)  # Initialize the iterator object
-        count = 0  # Initialization of a counter
+        self.count = 0  # Initialization of a counter
 
     def __iter__(self):
         """ Returns the iterator object itself """
@@ -27,9 +27,13 @@ class CountedIterator:
 
     def __next__(self):
         """ Returns the next item """
-        count = next(self.iterator)  # Goes to the next item in the iterable
-        type(self).count += 1  # Implementation of the counter
-        return count
+        try:
+            # Goes to the next item in the iterable
+            count = next(self.iterator)
+            type(self).count += 1  # Implementation of the counter
+            return count
+        except StopIteration:
+            raise
 
     def get_count(self):
         """Returns the current number of iterated elements """
