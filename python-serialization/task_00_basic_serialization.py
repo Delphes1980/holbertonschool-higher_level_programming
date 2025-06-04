@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines a method that reads a file (UTF8) and prints it to the
-standard output
+This module defines a method that serialize and deserialize an objet
 """
 
 import json
