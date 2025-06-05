@@ -16,7 +16,7 @@ def serialize_to_xml(dictionary, filename):
     """
     root = ET.Element("data")
     # Iteration through dictionary items
-    for key, value in dictionary.items:
+    for key, value in dictionary.items():
         # Each item is a child element to the root
         # key becomes the tag name of the child element
         # value becomes the text content of the child element
@@ -46,6 +46,6 @@ def deserialize_from_xml(filename):
     my_dict = {}
     for child in root:  # Iteration through the child elements of the root
         key = child.tag  # Tag of the XML element is the dictionary key
-        value_str = child.text  # Text content of the XML element is the value
-        my_dict[key] = value_str
+        value = child.text  # Text content of the XML element is the value
+        my_dict[key] = value
     return my_dict
