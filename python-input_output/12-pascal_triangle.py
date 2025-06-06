@@ -20,7 +20,7 @@ def pascal_triangle(n):
     # Iteration through the row to be generated (from 0 to n-1)
     for i in range(n):
         current_line = []
-        # Iteration through the current row (each row 'i' has 'i + 1' elements
+        # Iteration through the current row (each row 'i' has 'i + 1' elements)
         for j in range(i + 1):
             # first & last element of every row are always 1
             if j == 0 or j == i:
