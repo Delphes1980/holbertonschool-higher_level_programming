@@ -39,7 +39,7 @@ def fetch_and_save_posts():
             new_dict['body'] = i['body']
             # Add the restructured dictionary to the list
             new_list.append(new_dict)
-        with open('post.csv', 'w', newline='', encoding='utf-8') as f:
+        with open('posts.csv', 'w', newline='', encoding='utf-8') as f:
             # Create a DictWriter object to write dictionary keys to CSV
             # column headers
             writer_dict = csv.DictWriter(f, fieldnames=fields)
