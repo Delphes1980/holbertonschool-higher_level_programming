@@ -25,6 +25,7 @@ def fetch_and_save_posts():
     """ A function that fetches all post from JSONPlaceholder & save
     them to a CSV file"""
     response = requests.get('https://jsonplaceholder.typicode.com/posts')
+    print(f"Status Code: {response.status_code}")
     if response.status_code == 200:
         json_data = response.json()
         # Initialization of a new list to store the restructured data for CSV
