@@ -40,7 +40,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.send_response(404, message='Not Found')
             self.send_header('Content-Type', 'application/json')
             self.end_headers()
-            self.wfile.write(json.dumps("Endpoint not found").encode('utf-8'))
+            self.wfile.write(b"Endpoint not found")
 
 
 def run_server(port=8000):
