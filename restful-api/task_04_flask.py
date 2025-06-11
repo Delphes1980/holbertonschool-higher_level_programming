@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
 This module defines a basic HTTP server using Flask to serve API endpoints """
 
@@ -55,7 +55,7 @@ def add_user():
         users[username] = user_data  # Add the new user's data
         return jsonify({"message": "User added", "user": user_data}), 201
     else:
-        return jsonify({"error": "Username is required"}, 400)
+        return jsonify({"error": "Username is required"}), 400
 
 
 if __name__ == "__main__":
