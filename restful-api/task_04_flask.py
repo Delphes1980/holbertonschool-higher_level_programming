@@ -52,11 +52,10 @@ def add_user():
     """ Adds a new user to the system."""
     user_data = request.get_json()
     username = user_data.get("username")
-    if username:
-        users[username] = user_data  # Add the new user's data
-        return jsonify({"message": "User added", "user": user_data}, 201)
-    else:
+    if not username:
         return jsonify({"error": "Username is required"}, 400)
+    users[username] = user_data  # Add the new user's data
+    return jsonify({"message": "User added", "user": user_data}, 201)
 
 
 if __name__ == "__main__":
