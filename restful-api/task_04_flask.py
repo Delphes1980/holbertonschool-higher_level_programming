@@ -9,6 +9,9 @@ from flask import request
 app = Flask(__name__)
 
 
+users = {}
+
+
 @app.route('/')
 def home():
     """Returns a welcome message for the API."""
