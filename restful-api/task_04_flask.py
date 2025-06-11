@@ -41,7 +41,6 @@ def get_user_by_username(username):
     """
     user = users.get(username)
     if user:
-        users['username'] = username
         return jsonify(user)
     else:
         return jsonify({"error": "User not found"}), 404
@@ -52,10 +51,10 @@ def add_user():
     """ Adds a new user to the system."""
     user_data = request.get_json()
     username = user_data.get("username")
-    if not username:
+    if username:
+        users[username] = user_data  # Add the new user's data
+    else:
         return jsonify({"error": "Username is required"}, 400)
-    users[username] = user_data  # Add the new user's data
-    return jsonify({"message": "User added", "user": user_data}, 201)
 
 
 if __name__ == "__main__":
