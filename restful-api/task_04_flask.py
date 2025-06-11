@@ -53,6 +53,7 @@ def add_user():
     username = user_data.get("username")
     if username:
         users[username] = user_data  # Add the new user's data
+        return jsonify({"message": "User added", "user": user_data}), 201
     else:
         return jsonify({"error": "Username is required"}, 400)
 
