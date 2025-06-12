@@ -45,9 +45,9 @@ def home():
     return "Welcome to secured API!"
 
 
-@app.route('/basis-protected')
+@app.route('/basic-protected')
 @auth.login_required  # Protects this route with HTTP Basic Authentication
-def basis_protected():
+def basic_protected():
     """
     An endpoint protected by HTTP Basic Authentication.
     Access requires valid username/password in Authorization header
