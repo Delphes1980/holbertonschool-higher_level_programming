@@ -33,7 +33,7 @@ def verify_password(username, password):
     """
     user = users.get(username)  # Get user data from the in-memory store
     # Checks if user exists & password hash matches
-    if user in users and check_password_hash(user['password'], password):
+    if user in users and check_password_hash(user["password"], password):
         return user
     else:
         return None  # If credentials are invalid
@@ -65,7 +65,7 @@ def login():
     username = request.json.get("username")
     password = request.json.get("password")
     user = users.get(username)
-    if not user or not check_password_hash(user['password'], password):
+    if not user or not check_password_hash(user["password"], password):
         return jsonify({"Bad username or password"}), 401
     else:
         # Create an access token for the authenticated user
