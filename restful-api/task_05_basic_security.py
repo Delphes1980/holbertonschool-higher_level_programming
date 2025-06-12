@@ -39,9 +39,15 @@ def verify_password(username, password):
         return None  # If credentials are invalid
 
 
+@app.route('/')
+def home():
+    """Returns a welcome message for the API."""
+    return "Welcome to secured API!"
+
+
 @app.route('/basis-protected')
 @auth.login_required  # Protects this route with HTTP Basic Authentication
-def basic_protected():
+def basis_protected():
     """
     An endpoint protected by HTTP Basic Authentication.
     Access requires valid username/password in Authorization header
@@ -56,9 +62,10 @@ def login():
     a JWT access token
     Expects JSON with 'username' and 'password'.
     """
-    username = request.json.get("username", None)
-    password = request.json.get("password", None)
-    if username not in users or users[username]["password"] != password:
+    username = request.json.get("username")
+    password = request.json.get("password")
+    user = users.get(username)
+    if not user or not check_password_hash(user['password'], password):
         return jsonify({"Bad username or password"}), 401
     else:
         # Create an access token for the authenticated user
@@ -73,6 +80,7 @@ def jwt_protected():
     An endpoint protected by JWT authentication.
     Access requires a valid JWT in the Authorization: Bearer header
     """
+    current_user = get_jwt_identity()
     return "JWT Auth: Access Granted"
 
 
