@@ -10,4 +10,4 @@ INNER JOIN tv_genres  -- Second join: Links 'tv_show_genres' with 'tv_genres'
 ON tv_show_genres.genre_id = tv_genres.id  -- Join condition: Matches the 'genre_id' (foreign key) from 'tv_show_genres'
                         				   -- with the primary 'id' of the genre in the 'tv_genres' table
 WHERE tv_genres.name = 'Comedy'
-ORDER BY name ASC;
+ORDER BY title ASC;
