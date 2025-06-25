@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module lists all states from a specified database starting with a N
+This module lists all states from a specified database starting with N
 """
 import MySQLdb
 import sys
@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     cur = db.cursor()
 
-    cur.execute("SELECT * FROM states WHERE name LIKE N% ORDER BY id ASC;")
+    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC;")
     states = cur.fetchall()
 
     for id, name in states:
