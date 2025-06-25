@@ -21,7 +21,7 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     # SQL query: Select all states where name starts with 'N', sorted by id
-    cur.execute("SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY id ASC;")
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC;")
     # Fetch all results from the executed query
     states = cur.fetchall()
 
