@@ -11,8 +11,8 @@ if __name__ == "__main__":
     password = sys.argv[2]
     db_name = sys.argv[3]
 
-    db = MySQLdb.connect(host="localhost", user=user,
-                         passwd=password, database=db_name, port=3306)
+    db = MySQLdb.connect(host="localhost",port=3306, user=user,
+                         passwd=password, database=db_name)
 
     cur = db.cursor()
 
