@@ -11,8 +11,8 @@ if __name__ == "__main__":
     password = sys.argv[2]
     db_name = sys.argv[3]
 
-    db = MySQLdb.connect(host="localhost",port=3306, user=user,
-                         passwd=password, database=db_name)
+    db = MySQLdb.connect(host='localhost', user=user,
+                         passwd=password, database=db_name, port=3306)
 
     cur = db.cursor()
 
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     states = cur.fetchall()
 
     for id, name in states:
-        print(f"({id}, '{name}'")
+        print(f"({id}, '{name}')")
 
     cur.close()
     db.close()
