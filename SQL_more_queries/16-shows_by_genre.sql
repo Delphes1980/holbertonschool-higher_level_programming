@@ -9,4 +9,4 @@ LEFT JOIN tv_genres  -- Second LEFT JOIN: Continues from the previous join's res
                      -- including all linked 'tv_show_genres' entries, and matching genre names from 'tv_genres'
 ON tv_show_genres.genre_id = tv_genres.id  -- Join condition: Links the 'genre_id' from 'tv_show_genres'
                                             -- to the primary 'id' of the genre in 'tv_genres'
-ORDER BY title ASC;
+ORDER BY title ASC, name ASC;
