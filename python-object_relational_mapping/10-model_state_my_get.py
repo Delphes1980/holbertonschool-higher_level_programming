@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-This module displays all values in the states table where 'name' matches the
-argument 'state name searched' (safe from MySQL injection)
+Script that prints the State object with the name passed as argument
+from the database hbtn_0e_6_usa.
+Displays only the states.id if found, otherwise "Not found"
 """
 from model_state import Base, State
 from sqlalchemy import create_engine
@@ -32,14 +33,13 @@ if __name__ == "__main__":
     # Create a new Session instance
     session = Session()
 
-    arg_states = session.query(State).filter(State.name == state_name_to_search).order_by(State.id).all()
+    arg_states = session.query(State).filter(State.name == state_name_to_search).first()
 
     if not arg_states:  # Checks if the list is empty
         print("Not found")
     else:
         # Get the first (and assumedly only) State object from the list
-        found_state = arg_states[0]
-        print(f"{found_state.id}")
+        print(f"{arg_states.id}")
 
     # Close the session to release database resources
     session.close()
