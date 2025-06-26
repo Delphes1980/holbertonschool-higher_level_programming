@@ -18,7 +18,7 @@ if __name__ == "__main__":
     state_name_to_search = sys.argv[4]
 
     # Construct the database URL for SQLAlchemy
-    DB_URL = f"mysql+mysqldb://{user}:{password}@localhost:3306/{db_name}"""
+    DB_URL = f"mysql+mysqldb://{user}:{password}@localhost:3306/{db_name}"
 
     # Create the SQLAlchemy engine to manage database connections
     engine = create_engine(DB_URL)
@@ -33,7 +33,11 @@ if __name__ == "__main__":
     # Create a new Session instance
     session = Session()
 
-    arg_states = session.query(State).filter(State.name == state_name_to_search).first()
+    arg_states = (
+        session.query(State)
+        .filter(State.name == state_name_to_search)
+        .first()
+    )
 
     if not arg_states:  # Checks if the list is empty
         print("Not found")
