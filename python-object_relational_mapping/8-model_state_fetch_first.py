@@ -33,7 +33,7 @@ if __name__ == "__main__":
     session = Session()
 
     # Query the first State object from the database, ordered by its ID
-    first_state = session.query(State).first()
+    first_state = session.query(State).order_by(State.id).first()
 
     if not State:
         print("Nothing")
