@@ -24,7 +24,7 @@ if __name__ =="__main__":
 	query = """SELECT *
 				FROM states
 				WHERE BINARY name = %s
-				ORDER BY id ASC;""".format(state_name_search)
+				ORDER BY id ASC;"""
 
 	cur.execute(query, (state_name_search,))
 
