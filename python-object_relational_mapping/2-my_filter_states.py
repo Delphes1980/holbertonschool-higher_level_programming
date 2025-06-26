@@ -28,7 +28,7 @@ if __name__ == "__main__":
     # the provided argument
     query = """SELECT *
                 FROM states
-                WHERE name = '{}'
+                WHERE BINARY name = '{}'
                 ORDER BY id ASC;""".format(state_name_search)
     cur.execute(query)
 
