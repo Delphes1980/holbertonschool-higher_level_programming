@@ -39,3 +39,6 @@ if __name__ == "__main__":
         print("Nothing")
     else:
         print(f"{first_state.id}: {first_state.name}")
+
+    # Close the session to release database resources
+    session.close()
