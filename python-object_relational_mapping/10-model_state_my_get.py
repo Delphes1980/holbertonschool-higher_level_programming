@@ -36,14 +36,15 @@ if __name__ == "__main__":
     arg_states = (
         session.query(State)
         .filter(State.name == state_name_to_search)
-        .first()
+        .all()
     )
 
     if not arg_states:  # Checks if the list is empty
         print("Not found")
     else:
         # Get the first (and assumedly only) State object from the list
-        print(f"{arg_states.id}")
+        for state in arg_states:
+            print(f"{state.id}")
 
     # Close the session to release database resources
     session.close()
