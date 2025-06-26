@@ -23,9 +23,10 @@ if __name__ =="__main__":
 
 	query = """SELECT *
 				FROM states
-				WHERE BINARY name = '{}\'
+				WHERE BINARY name = %s
 				ORDER BY id ASC;""".format(state_name_search)
-	cur.execute(query)
+
+	cur.execute(query, (state_name_search,))
 
 	states = cur.fetchall()
 
