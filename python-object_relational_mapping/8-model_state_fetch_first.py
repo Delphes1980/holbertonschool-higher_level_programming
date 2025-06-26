@@ -35,7 +35,7 @@ if __name__ == "__main__":
     # Query the first State object from the database, ordered by its ID
     first_state = session.query(State).order_by(State.id).first()
 
-    if not State:
+    if not first_state:
         print("Nothing")
     else:
         print(f"{first_state.id}: {first_state.name}")
