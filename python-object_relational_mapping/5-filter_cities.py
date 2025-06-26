@@ -25,7 +25,7 @@ if __name__ == "__main__":
 	cur = db.cursor()
 
 	# SQL query: Selects city name for cities belonging to the specified state
-	query = """SELECT cities.name
+	query = """SELECT cities.id, cities.name, states.name
 			FROM cities
 			INNER JOIN states
 			ON cities.state_id = states.id
@@ -38,7 +38,7 @@ if __name__ == "__main__":
 	city = cur.fetchall()
 
 	# Collect city names into a list
-	city_names = [row[0] for row in city]
+	city_names = [row[1] for row in city]
 
 	# Initialize an empty string to build the output
 	list_names = ""
@@ -48,7 +48,6 @@ if __name__ == "__main__":
 		if i < len(city_names) -1:
 			list_names += ","
 	print(list_names)
-			
 
 	# Close the cursor and the database connection
 	cur.close()
