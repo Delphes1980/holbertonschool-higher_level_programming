@@ -13,7 +13,8 @@ import sys
 if __name__ == "__main__":
     # Validate the number of arguments passed
     if len(sys.argv) != 5:
-        print("Usage: {} <user> <password> <db_name> <state_name_to_search>".format(sys.argv[0]))
+        print("Usage: {} <user> <password> <db_name> <state_name_to_search>"
+              .format(sys.argv[0]))
         sys.exit(1)
 
     # Get database connection details from command-line arguments
