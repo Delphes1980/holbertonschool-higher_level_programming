@@ -40,11 +40,9 @@ if __name__ == "__main__":
     update_state = (
         session.query(State)
         .filter_by(id=2)
-        .first()
+        .update({"name": "New Mexico"})
     )
-    if update_state:
-        update_state.name = "New Mexico"
-        session.commit()
+    session.commit()
 
     # Close the session to release database resources
     session.close()
