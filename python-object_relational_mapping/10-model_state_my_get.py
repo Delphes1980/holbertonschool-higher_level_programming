@@ -21,7 +21,7 @@ if __name__ == "__main__":
     user = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    state_name_to_search = sys.argv[4]
+    name_to_search = sys.argv[4]
 
     # Construct the database URL for SQLAlchemy
     DB_URL = f"mysql+mysqldb://{user}:{password}@localhost:3306/{db_name}"
@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     arg_states = (
         session.query(State)
-        .filter(State.name == state_name_to_search)
+        .filter(State.name == name_to_search)
         .first()
     )
 
