@@ -4,30 +4,32 @@ Script that prints the State object with the name passed as argument
 from the database hbtn_0e_6_usa.
 Displays only the states.id if found, otherwise "Not found"
 """
-from model_state import Base, State
+import sys
+from model_state import State, Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-import sys
 
 
 if __name__ == "__main__":
     # Validate the number of arguments passed
     if len(sys.argv) != 5:
-        print("Usage: {} <user> <password> <db_name> <state_name_to_search>"
+        print("Usage: {} <mysql username> <mysql pwd> <db name> <state search>"
               .format(sys.argv[0]))
         sys.exit(1)
 
     # Get database connection details from command-line arguments
-    user = sys.argv[1]
+    username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    state_searched = sys.argv[4]
-
-    # Construct the database URL for SQLAlchemy
-    DB_URL = f"mysql+mysqldb://{user}:{password}@localhost:3306/{db_name}"
+    name_to_search = sys.argv[4]
 
     # Create the SQLAlchemy engine to manage database connections
-    engine = create_engine(DB_URL, pool_pre_ping=True)
+    # using the database URL
+    engine = create_engine(
+        'mysql+mysqldb://{}:{}@localhost:3306/{}'
+        .format(username, password, db_name),
+        pool_pre_ping=True
+    )
 
     # Create all tables defined in Base's metadata (e.g., 'states' table)
     # This ensures the table exists in the database
@@ -35,20 +37,18 @@ if __name__ == "__main__":
 
     # Create a configured Session class
     Session = sessionmaker(bind=engine)
-
     # Create a new Session instance
     session = Session()
 
-    arg_states = (
+    state = (
         session.query(State)
-        .filter(State.name == state_searched)
+        .filter(State.name == name_to_search)
         .first()
     )
 
-    if arg_states is not None:  # Checks if the list is empty
-        print(arg_states.id)
+    if state:
+        print(state.id)
     else:
-        # Get the first (and assumedly only) State object from the list
         print("Not found")
 
     # Close the session to release database resources
