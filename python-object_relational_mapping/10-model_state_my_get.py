@@ -11,6 +11,11 @@ import sys
 
 
 if __name__ == "__main__":
+    # Validate the number of arguments passed
+    if len(sys.argv) < 4:
+        print("Usage: {} <user><password><db_name>".format(sys.argv[0]))
+        sys.exit(1)
+
     # Get database connection details from command-line arguments
     user = sys.argv[1]
     password = sys.argv[2]
