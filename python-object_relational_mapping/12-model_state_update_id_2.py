@@ -12,7 +12,7 @@ from sqlalchemy import update
 
 if __name__ == "__main__":
     # Validate the number of arguments passed
-    if len(sys.argv) < 4:
+    if len(sys.argv) != 4:
         print("Usage: {} <user><password><db_name>".format(sys.argv[0]))
         sys.exit(1)
 
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     # Update the data where the id = 2
     update_state = (
         session.query(State)
-        .filter(State.id == 2)
+        .filter_by(id=2)
         .update({"name": "New Mexico"})
     )
     session.commit()

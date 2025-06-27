@@ -11,7 +11,7 @@ from model_state import Base, State
 
 if __name__ == "__main__":
     # Validate the number of arguments passed
-    if len(sys.argv) < 4:
+    if len(sys.argv) != 4:
         print("Usage: {} <user><password><db_name>".format(sys.argv[0]))
         sys.exit(1)
 
