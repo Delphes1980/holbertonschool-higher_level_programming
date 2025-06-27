@@ -44,11 +44,11 @@ if __name__ == "__main__":
         .first()
     )
 
-    if not arg_states:  # Checks if the list is empty
-        print("Not found")
+    if arg_states is not None:  # Checks if the list is empty
+        print(arg_states.id)
     else:
         # Get the first (and assumedly only) State object from the list
-        print(arg_states.id)
+        print("Not found")
 
     # Close the session to release database resources
     session.close()
