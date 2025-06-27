@@ -1,50 +1,55 @@
 #!/usr/bin/python3
 """
-    Script to list State contain letter a from database hbtn_0e_0_usa
-
-    ARGUMENTS :
-            mysql username = user
-            mysql password = pswd
-            database name = db_name
-            state_name_to_search = search_name
-
+Script that prints the State object with the name passed as argument
+from the database hbtn_0e_6_usa.
+Displays only the states.id if found, otherwise "Not found"
 """
-
-import sys
-from sqlalchemy import (create_engine)
-from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+import sys
+
 
 if __name__ == "__main__":
-    # Recover argument from user
-    user = sys.argv[1]
-    pswd = sys.argv[2]
-    db_name = sys.argv[3]
-    search_name = sys.argv[4]
+    # Validate the number of arguments passed
+    if len(sys.argv) != 5:
+        print("Usage: {} <user> <password> <db_name> <state_name_to_search>"
+              .format(sys.argv[0]))
+        sys.exit(1)
 
-    # create bd
-    engine = create_engine(
-        'mysql+mysqldb://{}:{}@localhost/{}'
-        .format(user,
-                pswd,
-                db_name,
-                search_name),
-        pool_pre_ping=True
-    )
-    # function to create all tables in the bd engine
+    # Get database connection details from command-line arguments
+    user = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
+    state_searched = sys.argv[4]
+
+    # Construct the database URL for SQLAlchemy
+    DB_URL = f"mysql+mysqldb://{user}:{password}@localhost:3306/{db_name}"
+
+    # Create the SQLAlchemy engine to manage database connections
+    engine = create_engine(DB_URL, pool_pre_ping=True)
+
+    # Create all tables defined in Base's metadata (e.g., 'states' table)
+    # This ensures the table exists in the database
     Base.metadata.create_all(engine)
 
-    # create session to save in bd
+    # Create a configured Session class
     Session = sessionmaker(bind=engine)
+
+    # Create a new Session instance
     session = Session()
 
-    # query + construct string response
-    # if no answer print Not found
-    query = session.query(State)\
-        .filter(State.name == search_name).first()
-    if query is not None:
-        print(query.id)
+    arg_states = (
+        session.query(State)
+        .filter(State.name == state_searched)
+        .first()
+    )
+
+    if arg_states is not None:  # Checks if the list is empty
+        print(arg_states.id)
     else:
+        # Get the first (and assumedly only) State object from the list
         print("Not found")
 
+    # Close the session to release database resources
     session.close()

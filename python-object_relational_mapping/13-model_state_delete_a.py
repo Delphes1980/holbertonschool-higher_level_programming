@@ -42,7 +42,7 @@ if __name__ == "__main__":
     if delete_state:
         for erase in delete_state:
             session.delete(erase)
-            session.commit()
+        session.commit()
 
     # Close the session to release database resources
     session.close()
