@@ -12,8 +12,8 @@ import sys
 
 if __name__ == "__main__":
     # Validate the number of arguments passed
-    if len(sys.argv) < 4:
-        print("Usage: {} <user><password><db_name>".format(sys.argv[0]))
+    if len(sys.argv) < 5:
+        print("Usage: {} <user><password><db_name><state_name_to_search>".format(sys.argv[0]))
         sys.exit(1)
 
     # Get database connection details from command-line arguments
@@ -23,7 +23,7 @@ if __name__ == "__main__":
     state_name_to_search = sys.argv[4]
 
     # Construct the database URL for SQLAlchemy
-    DB_URL = f"mysql+mysqldb://{user}:{password}@localhost:3306/{db_name}"
+    DB_URL = f"mysql+mysqldb://{user}:{password}@localhost/{db_name}"
 
     # Create the SQLAlchemy engine to manage database connections
     engine = create_engine(DB_URL)
