@@ -23,10 +23,10 @@ if __name__ == "__main__":
     state_name_to_search = sys.argv[4]
 
     # Construct the database URL for SQLAlchemy
-    DB_URL = f"mysql+mysqldb://{user}:{password}@localhost/{db_name}"
+    DB_URL = f"mysql+mysqldb://{user}:{password}@localhost:3306/{db_name}"
 
     # Create the SQLAlchemy engine to manage database connections
-    engine = create_engine(DB_URL)
+    engine = create_engine(DB_URL, pool_pre_ping=True)
 
     # Create all tables defined in Base's metadata (e.g., 'states' table)
     # This ensures the table exists in the database
