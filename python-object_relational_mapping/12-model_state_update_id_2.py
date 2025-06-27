@@ -7,13 +7,12 @@ import sys
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from model_state import Base, State
-from sqlalchemy import update
 
 
 if __name__ == "__main__":
     # Validate the number of arguments passed
     if len(sys.argv) != 4:
-        print("Usage: {} <user><password><db_name>".format(sys.argv[0]))
+        print("Usage: {} <user> <password> <db_name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Get database connection details from command-line arguments
@@ -41,9 +40,11 @@ if __name__ == "__main__":
     update_state = (
         session.query(State)
         .filter_by(id=2)
-        .update({"name": "New Mexico"})
+        .first()
     )
-    session.commit()
+    if update_state:
+        update_state.name = "New Mexico"
+        session.commit()
 
     # Close the session to release database resources
     session.close()
