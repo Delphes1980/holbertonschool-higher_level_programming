@@ -1,37 +1,49 @@
 #!/usr/bin/python3
 """
-Script to search a specific state passed in parameters.
-"""
-import sys
-from model_state import State, Base
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+    Script to list State contain letter a from database hbtn_0e_0_usa
 
+    ARGUMENTS :
+            mysql username = user
+            mysql password = pswd
+            database name = db_name
+            state_name_to_search = search_name
+
+"""
+
+import sys
+from sqlalchemy import (create_engine)
+from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print("Usage: {} <mysql username> <mysql pwd> <db name> <state search>"
-              .format(sys.argv[0]))
-        sys.exit(1)
-
-    username = sys.argv[1]
-    password = sys.argv[2]
+    # Recover argument from user
+    user = sys.argv[1]
+    pswd = sys.argv[2]
     db_name = sys.argv[3]
-    state_searched = sys.argv[4]
+    search_name = sys.argv[4]
 
+    # create bd
     engine = create_engine(
-        'mysql+mysqldb://{}:{}@localhost:3306/{}'
-        .format(username, password, db_name),
+        'mysql+mysqldb://{}:{}@localhost/{}'
+        .format(user,
+                pswd,
+                db_name,
+                search_name),
         pool_pre_ping=True
     )
+    # function to create all tables in the bd engine
+    Base.metadata.create_all(engine)
 
+    # create session to save in bd
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(State).filter(State.name == state_searched).first()
-
-    if state:
-        print(state.id)
+    # query + construct string response
+    # if no answer print Not found
+    query = session.query(State)\
+        .filter(State.name == search_name).first()
+    if query is not None:
+        print(query.id)
     else:
         print("Not found")
 
