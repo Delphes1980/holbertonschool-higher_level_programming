@@ -8,5 +8,5 @@ if (isNaN(arg)) {
 } else {
   for (i = 0; i < arg; i++) {
     console.log(line);
-}
+  }
 }
