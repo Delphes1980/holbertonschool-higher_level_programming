@@ -30,14 +30,13 @@ def generate_invitations(template, attendees):
 	# Iteration through the list of attendees starting to 1
 	for index, attendee in enumerate(attendees, start = 1):
 		current_message = template
-		# Iteration through the dictionary items
-		for key, value in attendee.items():
+		# Iteration through the key
+		for key in ['name', 'event_title', 'event_date', 'event_location']:
 			placeholder = "{" + key + "}"
-			if not value:
-				current_message = current_message.replace(placeholder, 'N/A')
-				continue
-			else:
-				current_message = current_message.replace(placeholder, str(value))
+			# Give the default value 'N/A' if the value is missing
+			value = attendee.get(key, 'N/A')
+
+			current_message = current_message.replace(placeholder, str(value))
 
 			# Write the output in a file
 			output_filename = f"output_{index}.txt"
