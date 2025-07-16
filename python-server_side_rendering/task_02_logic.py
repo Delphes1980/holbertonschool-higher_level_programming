@@ -21,7 +21,7 @@ def item():
 	with open(filename, "r") as file:
 		data = json.load(file)
 		list_items = data.get("items")
-	return render_template('items.html')
+	return render_template('items.html', items=list_items)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

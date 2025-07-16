@@ -9,13 +9,13 @@
 		<h1>Items List</h1>
 		<p>This is the section where you can see a list of items</p>
 		{% if items %}
-		<ul>
-		{% for i in items %}
+			<ul>
+				{% for i in items %}
 			<li>{{items}}</li>
-		{% endfor %}
+				{% endfor %}
 		</ul>
 		{% else %}
-		<p>No items found</p>
+			<p>No items found</p>
 		{% endif %}
 	</main>
 	{% include 'footer.html' %}
