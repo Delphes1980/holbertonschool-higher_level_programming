@@ -28,7 +28,7 @@ def generate_invitations(template, attendees):
 		return
 
 	# Iteration through the list of attendees starting to 1
-	for index, attendee in enumerate(attendee, start = 1):
+	for index, attendee in enumerate(attendees, start = 1):
 		current_message = template
 		# Iteration through the dictionary items
 		for key, value in attendee.items():
