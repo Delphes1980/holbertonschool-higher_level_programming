@@ -46,7 +46,10 @@ def sql_file():
 	data = cursor.fetchall()
 	db.close()
 	for row in data:
-		return row
+		return {row[0] == int('id'),
+		  		row[1] == str('name'),
+				row[2] == str('category'),
+				row[3] == float('price')}
 
 
 @app.route('/')
