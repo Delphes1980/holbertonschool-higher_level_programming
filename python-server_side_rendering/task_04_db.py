@@ -40,16 +40,28 @@ def csv_file():
 		return None
 
 def sql_file():
-	db = sqlite3.connect("products.db")
-	cursor = db.cursor()
-	cursor.execute("SELECT id, name, category, price FROM products")
-	data = cursor.fetchall()
-	db.close()
-	for row in data:
-		return {row[0] == int('id'),
-		  		row[1] == str('name'),
-				row[2] == str('category'),
-				row[3] == float('price')}
+	try:
+		with sqlite3.connect("products.db") as db:
+			cursor = db.cursor()
+			cursor.execute("SELECT id, name, category, price FROM products")
+			data = cursor.fetchall()
+			# db.close()
+			data_list = []
+			for row in data:
+				data_dict = {'id': row[0],
+		  				'name': row[1],
+						'category': row[2],
+						'price': row[3]}
+				data_list.append(data_dict)
+		return data_list
+
+	except FileNotFoundError:
+		logging.error(f"CSV file not found")
+		return None
+
+	except Exception as e:
+		logging.error('Something went wrong')
+		return None
 
 
 @app.route('/')
