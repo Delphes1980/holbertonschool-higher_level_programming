@@ -1,0 +1,36 @@
+<!doctype html>
+   <html lang="en">
+   <head>
+       <title>My Flask App</title>
+   </head>
+   <body>
+	{% include 'header.html' %}
+	<main>
+		<h1>Product Display</h1>
+		<p>This is the section where you can see a table of products</p>
+		{% if source %}
+	<table>
+		<thead>
+			<tr>>
+			<th scope="col">Name</th>
+			<th scope="col">Category</th>
+			<th scope="col">Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in products %}
+			<tr>
+			<td scope="row">{{product.name}}</td>
+			<td scope="row">{{product.category}}</td>
+			<td scope="row">{{product.price}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+	<p>No products to display</p>
+	{% endif %}
+	</main>
+	{% include 'footer.html' %}
+   </body>
+   </html>
