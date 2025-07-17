@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import json
 import csv
 import logging
+import sqlite3
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -38,6 +39,15 @@ def csv_file():
 		logging.error('Something went wrong')
 		return None
 
+def sql_file():
+	db = sqlite3.connect("products.db")
+	cursor = db.cursor()
+	cursor.execute("SELECT id, name, category, price FROM products")
+	data = cursor.fetchall()
+	db.close()
+	for row in data:
+		return row
+
 
 @app.route('/')
 def home():
@@ -71,6 +81,9 @@ def display_product():
 
 	elif source_format == 'csv':
 		data = csv_file()
+
+	elif source_format == 'sql':
+		data = sql_file()
 
 	else:
 		error_msg = 'Wrong source, please use "json", "csv" or "sql" files'
