@@ -93,7 +93,7 @@ def display_product():
 			if found_product:
 				return render_template('product_display.html', products=[found_product])
 			else:
-				error_msg = 'No product with this ID was found'
+				error_msg = 'Product not found'
 				return render_template('product_display.html', error=error_msg)
 
 		except ValueError:
