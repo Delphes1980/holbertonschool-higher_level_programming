@@ -8,7 +8,9 @@
 	<main>
 		<h1>Product Display</h1>
 		<p>This is the section where you can see a table of products</p>
-		{% if source %}
+		{% if error %}
+		<p>{{error}}</p>
+		{% elif products %}
 	<table>
 		<thead>
 			<tr>>

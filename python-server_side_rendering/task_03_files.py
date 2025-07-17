@@ -24,9 +24,16 @@ def csv_file():
 			reader_dict = csv.DictReader(file)
 			for row in reader_dict:
 				row['id'] = int(row['id'])
+				row['name'] = str(row['name'])
+				row['category'] = str(row['category'])
 				row['price'] = float(row['price'])
 				data_list.append(row)
 		return data_list
+
+	except FileNotFoundError:
+		logging.error(f"CSV file not found")
+		return None
+
 	except Exception as e:
 		logging.error('Something went wrong')
 		return None
@@ -51,7 +58,7 @@ def item():
 		list_items = data.get("items")
 	return render_template('items.html', items=list_items)
 
-@app.route('/product_display')
+@app.route('/products')
 def display_product():
 	source_format = request.args.get('source')
 	given_id = request.args.get('id')
@@ -86,8 +93,13 @@ def display_product():
 					break
 			if found_product:
 				return render_template('product_display.html', products=[found_product])
+			else:
+				error_msg = 'No product with this ID was found'
+				return render_template('product_display.html', error=error_msg)
+
 		except ValueError:
-			error_msg = 'Product not found'
+			error_msg = 'Invalid ID format. ID must be an integer'
+			return render_template('product_display.html', error=error_msg)
 	else:
 		return render_template('product_display.html', products=data)
 
